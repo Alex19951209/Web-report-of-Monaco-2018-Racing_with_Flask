@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Drivers</h2>
+
+<div class="mb-3">
+    <span>Sort order:</span>
+    <a href="{{ url_for('drivers_page', order='asc') }}" class="btn btn-sm btn-outline-primary">Ascending</a>
+    <a href="{{ url_for('drivers_page', order='desc') }}" class="btn btn-sm btn-outline-secondary">Descending</a>
+</div>
+
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Team</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for driver in drivers %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ driver.name }}</td>
+            <td>
+                <a href="{{ url_for('driver_page', driver_id=driver.abbr) }}">{{ driver.abbr }}</a>
+            </td>
+            <td>{{ driver.team }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Common Statistics</h2>
+
+<div class="mb-3">
+    <span>Sort order:</span>
+    <a href="{{ url_for('report_page', order='asc') }}" class="btn btn-sm btn-outline-primary">Ascending</a>
+    <a href="{{ url_for('report_page', order='desc') }}" class="btn btn-sm btn-outline-secondary">Descending</a>
+</div>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Driver</th>
+            <th>Team</th>
+            <th>Lap Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for driver in good %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ driver.driver }}</td>
+            <td>{{ driver.team }}</td>
+            <td>{{ driver.duration }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if bad %}
+<h4 class="mt-5 text-danger">Invalid records</h4>
+<ul>
+{% for item in bad %}
+  <li>{{ item.abbr }}: {{ item.errors|join(', ') }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

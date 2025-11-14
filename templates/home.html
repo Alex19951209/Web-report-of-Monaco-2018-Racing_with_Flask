@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>🏁 Monaco Grand Prix 2018 Report</h1>
+    <p class="lead mt-3">
+        Explore the full race statistics and driver performance data
+        from the Monaco Grand Prix 2018 Formula 1 weekend.
+    </p>
+
+    <div class="mt-4">
+        <a href="{{ url_for('report_page') }}" class="btn btn-primary btn-lg me-3">
+            View Race Report
+        </a>
+        <a href="{{ url_for('drivers_page') }}" class="btn btn-outline-secondary btn-lg">
+            View Drivers
+        </a>
+    </div>
+</div>
+{% endblock %}
